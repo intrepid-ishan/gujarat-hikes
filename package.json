@@ -1,12 +1,12 @@
 {
-  "name": "yelpcamp",
+  "name": "gujarat-hikes",
   "version": "1.0.0",
-  "description": "YelpCamp start Yay!",
+  "description": "GujaratHikes start Yay!",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ishan Makadia",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

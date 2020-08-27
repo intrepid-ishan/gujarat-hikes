@@ -1,5 +1,5 @@
 body{
-    background: #a5ecec;
+    background-color:powderblue;
 }
 
 .thumbnail.pref{
@@ -12,4 +12,15 @@ body{
 
 .thumbnail .caption-full{
     padding: 9px;
+}
+
+.jumbotron{
+    background: rgb(66, 66, 182);
+    color: white;
+    text-align: center;
+}
+
+.jumbobutton{
+    background-color: tomato;
+    color: black;
 }
