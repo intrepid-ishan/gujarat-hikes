@@ -21,6 +21,8 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//#3344 here[authenticate method came with passportLocalMongoose]
+//Therefore, it will enable use of passport.authenticate
 //if !plugin then will needed to write authenticate function manually
 passport.use(new LocalStrategy(User.authenticate()));
 
@@ -140,13 +142,27 @@ app.post("/register",function(req,res){
             console.log(err);
             return res.render("register");
         }
-        passport.authenticate("local")(req,res,function(){
+            passport.authenticate("local")(req,res,function(){
             res.redirect("/campgrounds");
         });
     });
 });
 
+//show login form
+app.get("/login",function(req,res){
+    res.render("login");
+});
  
+//handling login logic
+//ref:#3344 up
+app.post("/login",passport.authenticate("local",
+    {
+        successRedirect:"/campgrounds",
+        failureRedirect:"/login"
+    }),function(req,res){
+    //no need
+});
+
 app.listen(3000, ()=>{
     console.log("Yelp Camp Server has started!");
 });
