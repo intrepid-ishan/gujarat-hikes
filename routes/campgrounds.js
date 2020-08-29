@@ -26,10 +26,15 @@ router.post("/",isLoggedIn,(req,res)=>{
    var name = req.body.name;
    var image = req.body.image;
    var desc = req.body.description;
+   var author = {
+       id: req.user._id,
+       username: req.user.username
+   }
    var newCampground = {
                        name:name,
                        image:image,
-                       description: desc
+                       description: desc,
+                       author: author 
                        };
    
    Campground.create(newCampground,function(err,newlyCreated){
@@ -37,6 +42,11 @@ router.post("/",isLoggedIn,(req,res)=>{
            console.log(err);
        }
        else{
+        // console.log("========="+ res.locals.currentUser.username);
+        // newlyCreated.author.id = req.user._id;
+        // newlyCreated.author.username = req.user.username;
+        // newlyCreated.save();
+           console.log(newlyCreated);
            res.redirect("/campgrounds");
        }
    });    

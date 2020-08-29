@@ -10,7 +10,14 @@ var campgroundSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
-    ]
+    ],
+    author: { //#one_to_one  [one campground can have one author]
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
 }); 
 
 var Campground = mongoose.model("Campground",campgroundSchema);
