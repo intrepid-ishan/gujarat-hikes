@@ -24,3 +24,7 @@ body{
     background-color: tomato;
     color: black;
 }
+
+#delete-form{
+    display: inline;
+}

@@ -5,6 +5,7 @@ var  express    = require("express"),
      passport   = require("passport"),
      LocalStrategy = require("passport-local"),
      Campground = require("./models/campground"),
+     methodOverride = require("method-override"),
      seedDB     = require("./seeds"),
      Comment    = require("./models/comment"),
      User       = require("./models/user");
@@ -15,6 +16,8 @@ var  express    = require("express"),
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");
+
+app.use(methodOverride("_method"));//PUT,DELETE
 
 seedDB();
 

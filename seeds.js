@@ -25,10 +25,10 @@ var seeds = [
 async function seedDB() {
 
     try {
-        await Comment.deleteMany({});
-        console.log("comment removed");
-        await Campground.deleteMany({});
-        console.log("campground removed");
+        // await Comment.deleteMany({});
+        // console.log("comment removed");
+        // await Campground.deleteMany({});
+        // console.log("campground removed");
 
         // for (const seed of seeds) {
         //     let campground = await Campground.create(seed);
