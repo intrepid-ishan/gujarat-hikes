@@ -75,6 +75,7 @@ router.get("/:id/edit",middleware.checkCampgroundOwnership,function(req,res){
 router.put("/:id",middleware.checkCampgroundOwnership, function(req,res){
     //[id, replaced value, callback] for findByIdAndUpdate
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err,updatedCampground){
+            req.flash("success","Campground Updated successfully");
             res.redirect("/campgrounds/"+req.params.id);
     });
 });
@@ -83,6 +84,7 @@ router.put("/:id",middleware.checkCampgroundOwnership, function(req,res){
 //DESTROY CAMPGROUND ROUTE
 router.delete("/:id",middleware.checkCampgroundOwnership,function(req,res){   
     Campground.findByIdAndRemove(req.params.id,function(err){
+            req.flash("success","Campground Deleted successfully");
             res.redirect("/campgrounds");
     });
 });

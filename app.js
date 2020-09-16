@@ -2,6 +2,7 @@ var  express    = require("express"),
      app        = express(),
      bodyParser = require('body-parser'),
      mongoose   = require("mongoose"),
+     flash      = require("connect-flash"),
      passport   = require("passport"),
      LocalStrategy = require("passport-local"),
      Campground = require("./models/campground"),
@@ -18,7 +19,7 @@ var commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index");
 
 app.use(methodOverride("_method"));//PUT,DELETE
-
+app.use(flash());
 seedDB();
 
 // PASSPORT CONGFIGURATION
@@ -50,6 +51,9 @@ app.use(express.static(__dirname+"/public"));
 //middleware[res.locals]
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error"); 
+    res.locals.success = req.flash("success");
+    //whenever req.flash with key=error isset it will be available here
     // console.log(res.locals.currentUser);
     next();//:|
 });
