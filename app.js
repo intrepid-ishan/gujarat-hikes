@@ -73,6 +73,6 @@ app.use("/campgrounds/:id/comments",commentRoutes);
 
 
 
-app.listen(3000 || process.env.PORT, process.env.IP, ()=>{
+app.listen(process.env.PORT, process.env.IP || 3000 , ()=>{
     console.log("Gujarat Hikes Server has started!");
 });
