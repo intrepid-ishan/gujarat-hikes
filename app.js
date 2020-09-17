@@ -35,15 +35,11 @@ passport.serializeUser(User.serializeUser());//..Therefore, it will enable use o
 passport.deserializeUser(User.deserializeUser());
 
 
-
-// mongoose.connect("mongodb://localhost:27017/gujarat-hikes",
-//     {
-//         useNewUrlParser: true, 
-//         useUnifiedTopology: true
-//     }
-// );
-
-mongoose.connect("mongodb+srv://Anand:Petikar@cluster0.iyoat.mongodb.net/<dbname>?retryWrites=true&w=majority",
+// export DATABASEURL=mongodb://localhost:27018/gujarat-hikes
+// console.log(process.env.DATABASEURL);
+//for heroku set key,value
+var url = process.env.DATABASEURL || "mongodb://localhost:27018/gujarat-hikes";
+mongoose.connect(url,
 {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -77,6 +73,6 @@ app.use("/campgrounds/:id/comments",commentRoutes);
 
 
 
-app.listen(process.env.PORT, process.env.IP, ()=>{
+app.listen(3000 || process.env.PORT, process.env.IP, ()=>{
     console.log("Gujarat Hikes Server has started!");
 });
