@@ -43,7 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 //     }
 // );
 
-mongoose.connect("mongodb+srv://Anand:Petikar@cluster0.wfbnr.mongodb.net/<dbname>?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://Anand:Petikar@cluster0.iyoat.mongodb.net/<dbname>?retryWrites=true&w=majority",
 {
     useNewUrlParser: true,
     useCreateIndex: true,
