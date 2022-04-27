@@ -24,19 +24,18 @@ seedDB();
 
 // PASSPORT CONGFIGURATION
 app.use(require("express-session")({
-    secret: "this can be anything",
+    secret: "2318ifnf@#$FAF",
     resave: false,
     saveUninitialized:false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));//#3344[authenticate method came with passportLocalMongoose]..
-passport.serializeUser(User.serializeUser());//..Therefore, it will enable use of passport.authenticate avoiding to type manually
+passport.use(new LocalStrategy(User.authenticate()));//ref:#3344 authenticate method came with passportLocalMongoose (refer models/user.js)
+passport.serializeUser(User.serializeUser());//..Therefore, it will enable use of passport.authenticate
 passport.deserializeUser(User.deserializeUser());
 
 
 // export DATABASEURL=mongodb://localhost:27018/gujarat-hikes
-// console.log(process.env.DATABASEURL);
 //for heroku set key,value
 var url = process.env.DATABASEURL || "mongodb://localhost:27018/gujarat-hikes";
 mongoose.connect(url,
@@ -61,8 +60,7 @@ app.use(function(req, res, next){
     res.locals.error = req.flash("error"); 
     res.locals.success = req.flash("success");
     //whenever req.flash with key=error isset it will be available here
-    // console.log(res.locals.currentUser);
-    next();//:|
+    next();
 });
 
 
@@ -73,6 +71,6 @@ app.use("/campgrounds/:id/comments",commentRoutes);
 
 
 
-app.listen(process.env.PORT, process.env.IP || 3000 , ()=>{
+app.listen(process.env.PORT || 3000, ()=>{
     console.log("Gujarat Hikes Server has started!");
 });
